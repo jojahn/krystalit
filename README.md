@@ -1,8 +1,8 @@
 # Krystalit
 
-> Lit & Tauri example mail application  
+> Lit & Tauri demo mail application  
 
-![krystalit](assets/Chrystalite.png)
+![krystalit](assets/Krystalit_128x128.png)
 
 ## Screenshots
 

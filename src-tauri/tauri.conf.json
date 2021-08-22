@@ -5,7 +5,7 @@
   },
   "build": {
     "distDir": "../public",
-    "devPath": "../public",
+    "devPath": "../dist",
     "beforeDevCommand": "",
     "beforeBuildCommand": ""
   },
