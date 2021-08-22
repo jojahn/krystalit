@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.ts",
   "scripts": {
-    "start": "wds --watch --root-dir=dist --node-resolve",
+    "start": "npm run build && concurrently \"wds --watch --root-dir=dist --node-resolve\" \"tsc --watch\"",
     "dev": "concurrently \"npm run start\"  \"npm run tauri dev\"",
     "dev:watch": "npm run build --watch && npm run tauri dev",
     "prebuild": "rimraf dist/**",
