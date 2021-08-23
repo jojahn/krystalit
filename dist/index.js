@@ -10,10 +10,29 @@ import "./components/folder-panel";
 import "./components/mail-list-panel";
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { materialIconsStyles } from "./styles/material-icons";
 let App = class App extends LitElement {
     constructor() {
         super(...arguments);
         this.name = 'Somebody';
+    }
+    static get styles() {
+        return [
+            materialIconsStyles,
+            css `
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+      :host {
+        font-family: 'Roboto', sans-serif;
+      }
+      .content {
+        display: flex;
+        position: fixed;
+        top: 50px;
+        width: 100vw;
+        height: calc(100vh - 50px);
+        left: 0;
+      }`
+        ];
     }
     render() {
         return html `
@@ -22,21 +41,10 @@ let App = class App extends LitElement {
             <folder-panel></folder-panel>
             <mail-list-panel></mail-list-panel>
         </div>
+        <link href="css/material-icons.css" rel="stylesheet">
         `;
     }
 };
-App.styles = css `
-		:host {
-			font-family: Arial, Helvetica, sans-serif
-		}
-    .content {
-			display: flex;
-      position: fixed;
-      top: 50px;
-      width: 100vw;
-      height: calc(100vh - 50px);
-			left: 0;
-    }`;
 __decorate([
     property()
 ], App.prototype, "name", void 0);

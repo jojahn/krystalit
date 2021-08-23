@@ -3,7 +3,7 @@ import "./components/folder-panel";
 import "./components/mail-list-panel";
 import { LitElement } from 'lit';
 export declare class App extends LitElement {
-    static styles: import("lit").CSSResult;
+    static get styles(): import("lit").CSSResult[];
     name: string;
     render(): import("lit-html").TemplateResult<1>;
 }
