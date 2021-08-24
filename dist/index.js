@@ -10,7 +10,7 @@ import "./components/folder-panel";
 import "./components/mail-list-panel";
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { materialIconsStyles } from "./styles/material-icons";
+import { lightTheme } from "./styles/lightTheme";
 let App = class App extends LitElement {
     constructor() {
         super(...arguments);
@@ -18,9 +18,9 @@ let App = class App extends LitElement {
     }
     static get styles() {
         return [
-            materialIconsStyles,
+            lightTheme,
             css `
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+      /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap'); */
       :host {
         font-family: 'Roboto', sans-serif;
       }

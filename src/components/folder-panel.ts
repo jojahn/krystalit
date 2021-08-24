@@ -1,22 +1,24 @@
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { materialIconsStyles } from '../styles/material-icons';
+import { lightTheme } from '../styles/lightTheme';
 
 @customElement('folder-panel')
 export class FolderPanel extends LitElement {
 	static get styles() {
 		return [
-			materialIconsStyles,
+			lightTheme,
 			css`
 				:host {
-					width: 10vw;
+					width: fit-content;
+					min-width: 50px;
 					height: 100%;
 					display: block;
-					background-color: #222;
+					background-color: var(--background-color-tertiary);
 					box-shadow: 0 0 50px rgba(0,0,0,0.5);
-					color: #aaa;
+					color: var(--text-color);
 					z-index: 99;
 					padding-top: 10px;
+					overflow: hidden;
 				}
 
 				ul {
@@ -28,14 +30,13 @@ export class FolderPanel extends LitElement {
 				li {
 					cursor: pointer;
 					height: 30px;
-					padding: 5px;
+					padding: 5px 15px;
 					font-size: 1rem;
 					line-height: 30px;
 					display: flex;
 					border: none;
 					border-radius: 0.1rem;
 					transition: 0.25s;
-					padding-left: 15px;
 				}
 
 				li.active {
@@ -57,7 +58,7 @@ export class FolderPanel extends LitElement {
 				}
 
 				.folder-icon {
-					color: #aaa;
+					color: var(--text-color);
 					line-height: 30px;
 					margin-right: 10px;
 					font-size: 1.25rem;

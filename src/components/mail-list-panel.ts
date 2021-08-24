@@ -4,11 +4,11 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement('mail-list-panel')
 export class MailListPanel extends LitElement {
 	static styles = css`:host {
-		width: 15%;
+		width: fit-content;
 		height: 100%;
 		display: block;
-		background-color: #333;
-		color: white;
+		background-color: var(--background-color-secondary);
+		color: var(--text-color);
 		padding-top: 10px;
 	}
 
@@ -24,6 +24,8 @@ export class MailListPanel extends LitElement {
 		border: none;
 		border-radius: 0.2rem;
 		transition: 0.25s;
+		width: 250px;
+		/* width: 15%; */
 	}
 
 	.email:hover {
