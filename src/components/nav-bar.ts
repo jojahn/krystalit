@@ -58,10 +58,7 @@ export class NavBar extends LitElement {
 	};
 
 	@property()
-	name = 'Somebody';
-
-	@property()
-	onSearch = (value) => undefined;
+	onSearch = (value: string) => undefined;
 
 	@property()
 	public value: string = "";
@@ -117,7 +114,7 @@ export class NavBar extends LitElement {
 
 	render() {
 		return html`<nav>
-			<div class="hex"></div>
+			<!-- <div class="hex"></div> -->
 			<form class="search-bar" @submit=${this.onSubmit}>
 				<input type="text" placeholder="search in mails" .value="${this.value}" @input="${this.onChange}">
 				<button type="submit"><span class="material-icons">search</span></button>

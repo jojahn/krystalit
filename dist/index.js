@@ -8,13 +8,42 @@ var _a;
 import "./components/nav-bar";
 import "./components/folder-panel";
 import "./components/mail-list-panel";
+import "./components/mail-viewer";
 import { html, css, LitElement } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { lightTheme } from "./styles/lightTheme";
+import { getMails } from "./services/mailProvider";
 let App = class App extends LitElement {
     constructor() {
         super(...arguments);
-        this.name = 'Somebody';
+        this.mails = [];
+        this.selectedMail = undefined;
+        this.selectedFolder = "Inbox";
+        this.searchValue = "";
+        this.onSelectMail = (mail) => {
+            console.log("selected mail:", mail.messageID);
+            this.selectedMail = mail;
+        };
+        this.onSelectFolder = (folder) => {
+            console.log("selected folder:", folder);
+            this.selectedFolder = folder;
+        };
+        this.onSearch = (value) => {
+            this.searchValue = value;
+        };
+        this.getVisibleMails = () => {
+            return this.mails
+                .filter(m => m.folder === this.selectedFolder)
+                .filter(m => {
+                if (!this.searchValue) {
+                    return true;
+                }
+                const inBody = m.body.indexOf(this.searchValue) != -1;
+                const inSender = m.sender.indexOf(this.searchValue) != -1;
+                const inSubject = m.subject.indexOf(this.searchValue) != -1;
+                return inBody || inSender || inSubject;
+            });
+        };
     }
     static get styles() {
         return [
@@ -34,20 +63,43 @@ let App = class App extends LitElement {
       }`
         ];
     }
+    async connectedCallback() {
+        super.connectedCallback();
+        this.mails = await getMails();
+        this.selectedMail = this.mails[0];
+    }
     render() {
+        console.log("render index");
         return html `
-        <nav-bar></nav-bar>
+        <nav-bar .onSearch="${this.onSearch}"></nav-bar>
         <div class="content">
-            <folder-panel></folder-panel>
-            <mail-list-panel></mail-list-panel>
+            <folder-panel
+              .value="${this.selectedFolder}"
+              .onSelect="${this.onSelectFolder}"
+            ></folder-panel>
+            <mail-list-panel
+              .onSelect="${this.onSelectMail}"
+              .value="${this.selectedMail}"
+              .mails=${this.getVisibleMails()}
+            ></mail-list-panel>
+            <mail-viewer .value="${this.selectedMail}"></mail-viewer>
         </div>
         <link href="css/material-icons.css" rel="stylesheet">
         `;
     }
 };
 __decorate([
+    property({ type: Array })
+], App.prototype, "mails", void 0);
+__decorate([
+    property({ type: Object })
+], App.prototype, "selectedMail", void 0);
+__decorate([
     property()
-], App.prototype, "name", void 0);
+], App.prototype, "selectedFolder", void 0);
+__decorate([
+    property()
+], App.prototype, "searchValue", void 0);
 App = __decorate([
     customElement('krystalit-app')
 ], App);

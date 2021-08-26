@@ -1,6 +1,6 @@
 {
   "name": "krystalit",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "src/index.ts",
   "scripts": {
@@ -8,11 +8,11 @@
     "start": "concurrently \"wds --watch --node-resolve\" \"tsc --watch\"",
     "start:desktop": "concurrently \"npm run start\"  \"npm run tauri dev\"",
     "clean": "rimraf dist/**",
-    "build": "npm run bundle && npm run tauri:build",
+    "build": "npm run bundle && npm run build:tauri",
     "prebundle": "npm run clean",
     "bundle": "rollup --config rollup.config.js",
     "tauri": "tauri",
-    "tauri:build": "npm run tauri build",
+    "build:tauri": "npm run tauri build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jojahn",
@@ -31,6 +31,7 @@
     "concurrently": "^6.2.1",
     "copyfiles": "^2.4.1",
     "ncp": "^2.0.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "rollup-plugin-node-resolve": "^5.2.0"
   }
 }

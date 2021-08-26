@@ -10,7 +10,7 @@ export class FolderPanel extends LitElement {
 			css`
 				:host {
 					width: fit-content;
-					min-width: 50px;
+					min-width: fit-content;
 					height: 100%;
 					display: block;
 					background-color: var(--background-color-tertiary);
@@ -28,6 +28,7 @@ export class FolderPanel extends LitElement {
 				}
 
 				li {
+					background-color: var(--background-color-tertiary);
 					cursor: pointer;
 					height: 30px;
 					padding: 5px 15px;
@@ -36,17 +37,16 @@ export class FolderPanel extends LitElement {
 					display: flex;
 					border: none;
 					border-radius: 0.1rem;
-					transition: 0.25s;
+					transition: 0.3s;
 				}
 
 				li.active {
-					background: linear-gradient(to top left, #F7A9D6, #858EF8);
-					background: #6E54EF;
+					background: var(--accent-color);
 					color: #222;
 				}
 
 				li.active:hover {
-					background: #6BE1BA;
+					background: var(--accent-color-secondary);
 				}
 
 				li.active .folder-icon {
@@ -54,7 +54,7 @@ export class FolderPanel extends LitElement {
 				}
 
 				li:hover {
-					background-color: #111;
+					background-color: var(--background-color-tertiary-hovered);
 				}
 
 				.folder-icon {
@@ -67,41 +67,52 @@ export class FolderPanel extends LitElement {
 		]
 	}
 
+	@property({ type: String })
+	value: string | undefined = undefined;
+
 	@property()
-	name = 'Somebody';
+	onSelect = (folder: string) => { console.log("selected:", folder); };
+
+	private onItemClick(folder: string) {
+		return (event) => {
+			this.value = folder;
+			this.onSelect(folder);
+		}
+	}
 
 	render() {
+		console.log(this.value);
 		return html`<ul>
-            <li class="active">
-							<span class="material-icons folder-icon">inbox</span>
-							<span>Inbound</span>
-						</li>
-            <li>
-							<span class="material-icons folder-icon">outbox</span>
-							<span>Outbound</span>
-						</li>
-            <li>
-							<span class="material-icons folder-icon">send</span>
-							<span>Sent</span>
-						</li>
-            <li>
-							<span class="material-icons folder-icon">drafts</span>
-							<span>Drafts</span>
-						</li>
-						<hr>
-						<li>
-							<span class="material-icons folder-icon">folder</span>
-							<span>Orders</span>
-						</li>
-            <li>
-							<span class="material-icons folder-icon">folder</span>
-							<span>Correspondence</span>
-						</li>
-            <li>
-							<span class="material-icons folder-icon">folder</span>
-							<span>Shipping</span>
-						</li>
-        </ul>`;
+			<li class="${this.value === 'Inbox' ? 'active' : ''}" @click="${this.onItemClick('Inbox')}">
+				<span class="material-icons folder-icon">inbox</span>
+				<span>Inbound</span>
+			</li>
+			<li class="${this.value === 'Sent' ? 'active' : ''}" @click="${this.onItemClick('Sent')}">
+				<span class="material-icons folder-icon">send</span>
+				<span>Sent</span>
+			</li>
+			<li class="${this.value === 'Drafts' ? 'active' : ''}" @click="${this.onItemClick('Drafts')}">
+				<span class="material-icons folder-icon">drafts</span>
+				<span>Drafts</span>
+			</li>
+			<li class="${this.value === 'Deleted' ? 'active' : ''}" @click="${this.onItemClick('Deleted')}">
+				<span class="material-icons folder-icon">delete</span>
+				<span>Deleted</span>
+			</li>
+			<hr>
+			<li class="${this.value === 'Orders' ? 'active' : ''}" @click="${this.onItemClick('Orders')}">
+				<span class="material-icons folder-icon">folder</span>
+				<span>Orders</span>
+			</li>
+			<li class="${this.value === 'Correspondence' ? 'active' : ''}" @click="${this.onItemClick('Correspondence')}">
+				<span class="material-icons folder-icon">folder</span>
+				<span>Correspondence</span>
+			</li>
+			<li class="${this.value === 'Shipping' ? 'active' : ''}" @click="${this.onItemClick('Shipping')}">
+				<span class="material-icons folder-icon">folder</span>
+				<span>Shipping</span>
+			</li>
+		</ul>`;
 	}
 }
 

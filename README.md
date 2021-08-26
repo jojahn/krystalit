@@ -2,13 +2,12 @@
 
 > Lit & Tauri demo mail application  
 
-![krystalit](assets/Krystalit_128x128.png)
+![krystalit](assets/Krystalit.png)
 
 ## Screenshots
 
-![krystalit](assets/screenshots/Blank.png)
+![krystalit](assets/screenshots/win_10_v_0_0_1.png)
 
 ## Downloads
 
-
-Download from releases
+Download from [Releases](https://github.com/jojahn/krystalit/releases)
