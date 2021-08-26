@@ -6,7 +6,7 @@
 
 ## Screenshots
 
-![krystalit](assets/screenshots/win_10_v_0_0_1.png)
+![krystalit](assets/screenshots/win_10_v_0_0_1.PNG)
 
 ## Downloads
 
