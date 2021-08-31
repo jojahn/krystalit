@@ -1,6 +1,9 @@
 import { Mail } from "../model/Mail";
+import { invoke } from "@tauri-apps/api/tauri";
 
 export function getMails(): Promise<Mail[]> {
+  invoke("greet");
+  invoke("load_mails").then((res) => console.log(res));
   return new Promise(resolve => resolve([
     {
       date: new Date(),

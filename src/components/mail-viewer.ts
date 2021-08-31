@@ -44,7 +44,6 @@ export class MailViewer extends LitElement {
 	value: Mail | undefined = undefined;
 
 	render() {
-		console.log("render mail viewer");
 		return html`
       <article>
         ${!!this.value ? html`

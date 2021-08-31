@@ -75,11 +75,9 @@ export class NavBar extends LitElement {
 	static makeHexCSS() {
 		const height = 40;
 		let { box: { w: boxWidth, h: boxHeight }, triangles: { h: trianglesHeight } } = generateCSSHexDimensions(height);
-		console.log(boxWidth, boxHeight, trianglesHeight);
 		boxHeight = height * 0.46;
 		trianglesHeight = (height - boxHeight) / 2;
 		boxWidth = height * 0.93;
-		console.log(boxWidth, boxHeight, trianglesHeight);
 		const boxWidthHalf = boxWidth / 2;
 		return css`
 			.hex:before {

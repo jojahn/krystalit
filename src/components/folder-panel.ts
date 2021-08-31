@@ -81,7 +81,6 @@ export class FolderPanel extends LitElement {
 	}
 
 	render() {
-		console.log(this.value);
 		return html`<ul>
 			<li class="${this.value === 'Inbox' ? 'active' : ''}" @click="${this.onItemClick('Inbox')}">
 				<span class="material-icons folder-icon">inbox</span>

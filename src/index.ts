@@ -52,12 +52,10 @@ export class App extends LitElement {
   }
 
   onSelectMail = (mail: Mail) => {
-    console.log("selected mail:", mail.messageID);
     this.selectedMail = mail;
   }
 
   onSelectFolder = (folder: string) => {
-    console.log("selected folder:", folder);
     this.selectedFolder = folder;
   }
 
@@ -80,7 +78,6 @@ export class App extends LitElement {
   }
 
   render() {
-    console.log("render index");
     return html`
         <nav-bar .onSearch="${this.onSearch}"></nav-bar>
         <div class="content">
@@ -99,7 +96,3 @@ export class App extends LitElement {
         `;
   }
 }
-
-
-document.getElementById("Title")?.insertAdjacentHTML("afterbegin", "<span>Hello, _!</span>");
-console.log("Hello, World!");
