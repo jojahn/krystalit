@@ -8,7 +8,6 @@ mod mail;
 
 fn main() {
   tauri::Builder::default()
-    .invoke_handler(tauri::generate_handler![greet])
     .invoke_handler(tauri::generate_handler![load_mails])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
@@ -20,14 +19,7 @@ fn greet() {
 }
 
 #[tauri::command]
-fn load_mails() -> mail::Mail {
-  let m = mail::Mail {
-    body: String::from("abc"),
-    subject: String::from("abc"),
-    sender: String::from("abc"),
-    message_id: String::from("abc"),
-    folder: String::from("abc"),
-    reciever: String::from("abc")
-  };
+fn load_mails() -> Vec<mail::Mail> {
+  let m = mail::get_sample_mails();
   return m;
 }
